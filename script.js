@@ -29,10 +29,8 @@ console.log(document.querySelector('.guess').value);
 //Implementing the Game Logic
 //Manipulating CSS Styles
 
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
-
-document.querySelector('.number').textContent = secretNumber;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
@@ -45,6 +43,8 @@ document.querySelector('.check').addEventListener('click', function () {
   //When player wins
   else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'Correct Number!';
+
+    document.querySelector('.number').textContent = secretNumber;
 
     //CSS Manipulation = Always String
     document.querySelector('body').style.backgroundColor = '#60b347';
@@ -74,3 +74,34 @@ document.querySelector('.check').addEventListener('click', function () {
     }
   }
 });
+
+//Reset Button
+document.querySelector('.again').addEventListener('click', function () {
+  //Return Background Color to Default
+  document.querySelector('body').style.backgroundColor = '#222';
+
+  //Hide Secret Number and change value
+  document.querySelector('.number').textContent = '?';
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+  //Return Box Size
+  document.querySelector('.number').style.width = '15rem';
+
+  //Clear Answer Box
+  document.querySelector('.guess').value = '';
+
+  //Revert Original Message
+  document.querySelector('.message').textContent = 'Start guessing...';
+
+  //Reset Score
+  score = 20;
+  document.querySelector('.score').textContent = score;
+});
+
+/*
+Coding Challenge #1
+Implement a game reset functionality, so that the player can make a new guess!
+
+
+GOOD LUCK 😀
+*/
