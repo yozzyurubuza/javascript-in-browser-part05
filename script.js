@@ -11,6 +11,7 @@ console.log(document.querySelector('.message').textContent);
 
 //Selecting and Manipulating Elements
 
+/*
 //Change the text content in the HTML
 document.querySelector('.message').textContent = 'Correct Number!';
 
@@ -22,3 +23,16 @@ document.querySelector('.guess').value = 23;
 
 //To get the value in the input
 console.log(document.querySelector('.guess').value);
+*/
+
+//Handling Click Events
+
+document.querySelector('.check').addEventListener('click', function () {
+  const guess = Number(document.querySelector('.guess').value);
+  console.log(guess, typeof guess);
+
+  //If there is no input = 0 = false
+  if (!guess) {
+    document.querySelector('.message').textContent = 'No Number!';
+  }
+});
